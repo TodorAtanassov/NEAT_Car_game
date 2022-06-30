@@ -14,3 +14,33 @@ car_size_y = 60
 border_color = (255, 255, 255, 255)  # Color in case of crash
 
 current_generation = 0  # Generation counter
+
+
+class Car:
+
+    def __innit(self):
+        # Loading car image and adding rotation and sprite
+        self.sprite = pygame.image.load('car.png').convert()
+        self.sprite = pygame.transform.scale(self.sprite, (car_size_x, car_size_y))
+        self.rotated_sprite = self.sprite
+
+        # Adding starting position(Depending on the map)
+        self.position = [830, 920]
+        self.angle = 0
+        self.speed = 0
+
+        self.speed_set = False
+
+        self.center = [self.position[0] + car_size_x/2, self.position[1] + car_size_y/2]  # Calculate center of the car
+
+        self.radars = []  # Using list for radars
+        self.drawing_radars = []  # Radars to be drawn
+
+        self.alive = True  # Checking if car has crashed
+
+        self.distance = 0  # Recording distance traveled
+        self.time = 0  # Recording time spent driving
+
+        def draw(self, screen):
+            screen.blit(self.rotated_sprite, self.position)
+            self.draw_radar(screen)
