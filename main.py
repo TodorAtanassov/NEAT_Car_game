@@ -44,3 +44,4 @@ class Car:
         def draw(self, screen):
             screen.blit(self.rotated_sprite, self.position)
             self.draw_radar(screen)
+
