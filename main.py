@@ -59,3 +59,8 @@ class Car:
                 if game_map.get_at(int(point[0]), int(point[1])) == border_color:
                     self.alive = False
                     break
+
+        def check_radar(self, degree, game_map):
+            length = 0
+            x = int(self.center[0] + math.cos(math.radians(360 - (self.angle + degree))) * length)
+            y = int(self.center[1] + math.sin(math.radians(360 - (self.angle + degree))) * length)
