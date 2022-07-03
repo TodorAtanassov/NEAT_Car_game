@@ -31,7 +31,8 @@ class Car:
 
         self.speed_set = False
 
-        self.center = [self.position[0] + car_size_x/2, self.position[1] + car_size_y/2]  # Calculate center of the car
+        self.center = [self.position[0] + car_size_x / 2,
+                       self.position[1] + car_size_y / 2]  # Calculate center of the car
 
         self.radars = []  # Using list for radars
         self.drawing_radars = []  # Radars to be drawn
@@ -52,4 +53,9 @@ class Car:
                 pygame.draw.circle(screen, (0, 255, 0), position, 5)
 
         def check_collision(self, game_map):
-
+            self.alive = True
+            for point in self.corners:
+                # if any corner of the car touches the border color == Crash
+                if game_map.get_at(int(point[0]), int(point[1])) == border_color:
+                    self.alive = False
+                    break
