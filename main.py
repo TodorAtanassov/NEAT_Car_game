@@ -45,3 +45,7 @@ class Car:
             screen.blit(self.rotated_sprite, self.position)
             self.draw_radar(screen)
 
+        def draw_radar(self, screen):
+            for radar in self.radars:
+                position = radar[0]
+                pygame.draw.line(screen(0, 255, 0), self.center, position, 1)
