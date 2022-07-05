@@ -86,8 +86,3 @@ class Car:
                 self.position[0] = max(self.position[0], 20)
                 self.position[0] = min(self.position[0], width - 120)
 
-
-
-
-
-
