@@ -74,6 +74,17 @@ class Car:
                 dist = int(math.sqrt(math.pow(x - self.center[0], 2) + math.pow(y - self.center[1], 2)))
                 self.radars.append([(x, y), dist])
 
+        # setting speed @ 20 for first time, only with 4 or more output nodes allow speed to regulate itslef
+        def update(self, game_map):
+            if not self.speed:
+                self.speed = 20
+                self.speed = True
+
+                # dont let car get closer than 20px to the border
+                self.rotated_sprite = self.rotate_center(self.sprite, self.angle)
+                self.position[0] += math.cos(math.radians(360 - self.angle)) * self.speed
+                self.position[0] = max(self.position[0], 20)
+                self.position[0] = min(self.position[0], width - 120)
 
 
 
