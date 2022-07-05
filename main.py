@@ -65,3 +65,18 @@ class Car:
             x = int(self.center[0] + math.cos(math.radians(360 - (self.angle + degree))) * length)
             y = int(self.center[1] + math.sin(math.radians(360 - (self.angle + degree))) * length)
 
+            # searching for the longest distance to wall and traveling that direction
+            while not game_map.get_at((x, y)) == border_color and length < 300:
+                length += 1
+                x = int(self.center[0] + math.cos(math.radians(360 - (self.angle + degree))) * length)
+                y = int(self.center[0] + math.sin(math.radians(360 - (self.angle + degree))) * length)
+
+                dist = int(math.sqrt(math.pow(x - self.center[0], 2) + math.pow(y - self.center[1], 2)))
+                self.radars.append([(x, y), dist])
+
+
+
+
+
+
+
